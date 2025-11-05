@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indira Putri Seruni - Official</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">Indira Seruni</div>
+      <div class="menu-toggle" id="mobile-menu">
+        <img src="assets/icons/menu.svg" alt="Menu" />
+      </div>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="active">Beranda</a>
+        <a href="profil.html">Profil</a>
+        <a href="foto.html">Foto</a>
+        <a href="video.html">Video</a>
+		<a href="kontak.html">Kontak</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Indira Putri Seruni</h1>
+          <p>Anggota JKT48 generasi ke-10, penyanyi dan performer dengan bakat luar biasa, serta sosok yang menginspirasi banyak penggemar di Indonesia dan dunia.</p>
+          <div class="hero-buttons">
+            <a href="profil.html" class="btn">Profil Lengkap</a>
+            <a href="foto.html" class="btn">Lihat Foto</a>
+            <a href="video.html" class="btn">Lihat Video</a>
+            <a href="kontak.html" class="btn">kontak</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <a href="profil.html">
+          <img src="assets/img/indira-hero1.jpeg" alt="Foto Indira Putri Seruni" />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Indira Putri Seruni. All rights reserved (Akmal Wibisana).
+  </footer>
+
+  <script>
+    // Toggle Hamburger Menu
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

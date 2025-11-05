@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login & Daftar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 320px;
+      backdrop-filter: blur(3px);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="form-title">Login Website</h2>
+    <form id="auth-form" onsubmit="handleSubmit(event)">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <div id="confirm-container" style="display: none;">
+        <input type="password" id="confirm-password" placeholder="Konfirmasi Password">
+      </div>
+      <button type="submit" id="submit-btn">Login</button>
+    </form>
+    <div class="toggle" onclick="toggleForm()">Belum punya akun? Daftar</div>
+  </div>
+
+  <script>
+    let isLogin = true;
+
+    function toggleForm() {
+      isLogin = !isLogin;
+      document.getElementById('form-title').innerText = isLogin ? 'Login' : 'Daftar';
+      document.getElementById('submit-btn').innerText = isLogin ? 'Login' : 'Daftar';
+      document.querySelector('.toggle').innerText = isLogin ? 'Belum punya akun? Daftar' : 'Sudah punya akun? Login';
+      document.getElementById('confirm-container').style.display = isLogin ? 'none' : 'block';
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (!isLogin) {
+        const confirmPassword = document.getElementById('confirm-password').value;
+        if (password !== confirmPassword) {
+          alert('Password tidak cocok!');
+          return;
+        }
+        // Simpan user ke localStorage (simulasi saja)
+        localStorage.setItem('user_' + username, password);
+        alert('Pendaftaran berhasil! Silakan login.');
+        toggleForm();
+      } else {
+        const stored = localStorage.getItem('user_' + username);
+        if (stored && stored === password) {
+          window.location.href = "index.html";
+        } else {
+          alert('Login gagal! Username atau password salah.');
+        }
+      }
+    }
+  </script>
+</body>
+</html>
